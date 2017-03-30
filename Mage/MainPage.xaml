@@ -6,8 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Canvas
+            x:Name="MyCanvas"
+            Width="1270"
+            Height="720"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom" Margin="0,0,10,0">
+            <Canvas.Background>
+                <ImageBrush ImageSource="Assets/peli.png"/>
+            </Canvas.Background>
+        </Canvas>
     </Grid>
 </Page>

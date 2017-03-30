@@ -22,9 +22,55 @@ namespace Mage
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        // tellu
+        private List<Tellu> tellut;
+
+        //skappari
+        private Skappari skappari;
+
+        //Rynkky
+        private Rynkky rynkky;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            skappari = new Skappari
+            {
+                LocationX = 100,
+                LocationY = 10
+            };
+            rynkky = new Rynkky
+            {
+                LocationX = MyCanvas.Width / 2,
+                LocationY = MyCanvas.Height / 2,
+                
+            };
+
+            // alustetaan tellulista
+            tellut = new List<Tellu>();
+
+            //lisätään skappari canvasiin
+            MyCanvas.Children.Add(skappari);
+
+            //lisätään rynkky canvasiin
+            MyCanvas.Children.Add(rynkky);
+
+            Window.Current.CoreWindow.PointerPressed += CoreWindow_PointerPressed;
         }
+
+        private void CoreWindow_PointerPressed(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.PointerEventArgs args)
+        {
+            Tellu tellu = new Tellu();
+            tellu.LocationX = args.CurrentPoint.Position.X - tellu.Width / 2;
+            tellu.LocationY = args.CurrentPoint.Position.Y - tellu.Width / 2;
+
+            MyCanvas.Children.Add(tellu);
+            tellu.SetLocation();
+
+            tellut.Add(tellu);
+        }
+
+
     }
 }
